@@ -1,3 +1,5 @@
-# Final Project Starter
+# Designed and created by Austin Shipp
 
-A starter repository for the Final Project.
+RocketShippDB is a movie database app powered by React.js, Express.js, Mongoose, and MongoDB.
+It pulls information from TMDb API.
+Thanks for your interest!
