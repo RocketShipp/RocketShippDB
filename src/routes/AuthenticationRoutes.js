@@ -16,9 +16,8 @@ function tokenForUser(user) {
 }
 
 router.post('/api/signin', signinStrategy, function (req, res) {
-  res.json({ token: tokenForUser(req.user)});
+  res.json({ token: tokenForUser(req.user), userId: req.user._id});
 });
-
 router.post('/api/signup', function (req, res, next) {
   const { username, password } = req.body;
 
@@ -45,7 +44,7 @@ router.post('/api/signup', function (req, res, next) {
           const newUser = new User({ username, password: hashedPassword});
 
           // Save and return user
-          newUser.save().then(user => res.json({ token: tokenForUser(user)}));
+          newUser.save().then(user => res.json({ token: tokenForUser(user), userId: newUser._id}));
         });
       });
     })

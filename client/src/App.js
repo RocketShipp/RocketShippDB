@@ -12,7 +12,8 @@ class App extends Component {
 
     this.state = {
       signUpSignInError: '',
-      authenticated: localStorage.getItem('token')
+      authenticated: localStorage.getItem('token'),
+      userId: null
     };
 
   }
@@ -68,13 +69,14 @@ class App extends Component {
         .then(resp => {
           const {token} = resp.data;
           localStorage.setItem('token', token);
-
           this.setState({
             signUpSignInError: '',
-            authenticated: token
+            authenticated: token,
+            userId: resp.data.userId
           });
         });
     }
+    
   }
   handleSignOut() {
     localStorage.removeItem('token');

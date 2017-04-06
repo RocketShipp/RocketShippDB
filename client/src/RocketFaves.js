@@ -11,7 +11,7 @@ class RocketFaves extends Component {
   }
 
   componentDidMount() {
-    axios.get('/api/rocketfaves', {
+    axios.get('/rocketfaves', {
       headers: {
         authorization: localStorage.getItem('token')
       }

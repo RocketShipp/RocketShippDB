@@ -1,5 +1,4 @@
-import ListRoutes from './routes/ListRoutes';
-import ListItemRoutes from './routes/ListItemRoutes';
+import ItemRoutes from './routes/ItemRoutes';
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -21,11 +20,10 @@ app.use(authenticationRoutes);
 
 const authStrategy = passport.authenticate('authStrategy', { session: false });
 
-app.use(authStrategy, ListRoutes);
-app.use(authStrategy, ListItemRoutes);
+app.use(authStrategy, ItemRoutes);
 
-app.get('/api/rocketfaves', authStrategy, function (req, res) {
-  res.send(`Hello, ${req.user.username}!`);
+app.get('/rocketfaves', authStrategy, function (req, res) {
+  res.send(`Whaddup, ${req.user.username}!`);
 });
 
 const port = process.env.PORT;
