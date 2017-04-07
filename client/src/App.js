@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import SignUpSignIn from './SignUpSignIn';
-import TopNavbar from './TopNavbar';
-import Protected from './Protected';
+import Movies from './Movies';
 import RocketFaves from './RocketFaves';
+import Profile from './Profile';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 class App extends Component {
   constructor() {
@@ -13,7 +14,7 @@ class App extends Component {
     this.state = {
       signUpSignInError: '',
       authenticated: localStorage.getItem('token'),
-      userId: null
+      userId: localStorage.getItem('userId')
     };
 
   }
@@ -26,13 +27,25 @@ class App extends Component {
       />
     );
   }
+  notFound() {
+    return (
+      <div className="col-xs-12 flexBoxCenterThis noMovies animated flipInY">
+        <h1>404</h1>
+        <p>{'Sorry, this page does\'t exist!'}</p>
+        <div className="flexBoxCenterThis">
+          <Link className="linkTo" to={'/'}>Get me outta here!</Link>
+        </div>
+      </div>
+    );
+  }
   renderApp() {
     return (
-      <div>
+      <div className="container-fluid">
         <Switch>
-          <Route exact path="/" component={Protected} />
+          <Route exact path="/" render={() => <Movies handleSignOut={this.handleSignOut.bind(this)}/>} />
+          <Route exact path={'/profile/:id'} component={Profile} />
           <Route exact path="/rocketfaves" component={RocketFaves} />
-          <Route render={() => <h1>NOT FOUND!</h1>} />
+          <Route render={() => this.notFound()} />
         </Switch>
       </div>
     );
@@ -44,15 +57,16 @@ class App extends Component {
         sinUpSignInError: 'Must Provide All Fields!'
       });
     } else {
-      axios.post('/api/signup', credentials)
+      axios.post('/signup', credentials)
         .then(resp => {
-          const { token } = resp.data;
+          const { token, userId } = resp.data;
 
           localStorage.setItem('token', token);
-
+          localStorage.setItem('userId', userId);
           this.setState({
             signUpSignInError: '',
-            authenticated: token
+            authenticated: token,
+            userId: userId
           });
         })
         .catch(err => console.log(err));
@@ -65,33 +79,31 @@ class App extends Component {
         signUpSignInError: 'Must provide username and password'
       });
     } else {
-      axios.post('/api/signin', credentials)
+      axios.post('/signin', credentials)
         .then(resp => {
-          const {token} = resp.data;
+          const {token, userId} = resp.data;
           localStorage.setItem('token', token);
+          localStorage.setItem('userId', userId);
           this.setState({
             signUpSignInError: '',
             authenticated: token,
-            userId: resp.data.userId
+            userId: userId
           });
         });
     }
-    
+
   }
   handleSignOut() {
     localStorage.removeItem('token');
     this.setState({
       authenticated: false,
+      userId: null
     });
   }
   render() {
     return (
       <BrowserRouter>
-        <div className="App">
-          <TopNavbar
-            showNavItems={this.state.authenticated}
-            onSignOut={this.handleSignOut.bind(this)}
-          />
+        <div className="router">
           {this.state.authenticated ? this.renderApp() : this.renderSignUpSignIn()}
         </div>
       </BrowserRouter>

@@ -15,10 +15,10 @@ function tokenForUser(user) {
   return jwt.encode({ userId: user._id, iat: timestamp}, process.env.SECRET);
 }
 
-router.post('/api/signin', signinStrategy, function (req, res) {
+router.post('/signin', signinStrategy, function (req, res) {
   res.json({ token: tokenForUser(req.user), userId: req.user._id});
 });
-router.post('/api/signup', function (req, res, next) {
+router.post('/signup', function (req, res, next) {
   const { username, password } = req.body;
 
   // No username or password supplied
@@ -44,7 +44,7 @@ router.post('/api/signup', function (req, res, next) {
           const newUser = new User({ username, password: hashedPassword});
 
           // Save and return user
-          newUser.save().then(user => res.json({ token: tokenForUser(user), userId: newUser._id}));
+          newUser.save().then(user => res.json({ token: tokenForUser(user), userId: user._id}));
         });
       });
     })

@@ -1,9 +1,15 @@
 body {
+  width: 100%;
+  height: 100%;
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  height: 100%;
-  width: 100%;
+  font-size: 1em;
+  background-image: url('http://i.imgur.com/zRWE6N7.png');
+  background-repeat: repeat-y;
+  background-position: top;
+  background-size: cover;
+  background-attachment: fixed;
 }
 .flexBoxCenterThis {
   margin: 0;
@@ -18,6 +24,7 @@ body {
 .linkTo, .linkTo:hover, .linkTo:focus, .linkTo:visited {
   text-decoration: none;
   color: inherit;
+  outline: none;
   padding: 0;
   margin: 0;
 }
@@ -26,4 +33,567 @@ body {
   background-image: none;
   border: none;
   color: black;
+}
+.signUpSignInLogo {
+  width: 100%;
+  font-size: 5em;
+  text-align: center;
+  display: inline-block;
+}
+.signUpSignInLogo > h1 {
+  color: rgb(255,255,100);
+  font-size: inherit;
+  text-shadow: .05em .05em .1em red;
+  font-family: 'Anton', sans-serif;
+  transition: 1s;
+  display: inline-block;
+  margin-bottom: 1em;
+}
+.signUpSignInLogo > i.fa-rocket {
+  display: inline-block;
+  margin-left: .2em;
+  color: rgba(255,0,0,.7);
+  transition: .5s;
+}
+.formsRow {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+ul.nav-tabs {
+  border: none;
+  margin-bottom: 1em;
+}
+ul.nav-tabs li {
+  background-color: transparent;
+  background-image: none;
+}
+ul.nav-tabs li.active a {
+  background-color: rgba(100,255,100,.5) !important;
+}
+a#signup-signin-tabs-tab-1, a#signup-signin-tabs-tab-1:active, a#signup-signin-tabs-tab-1:visited, a#signup-signin-tabs-tab-1:hover,
+a#signup-signin-tabs-tab-2, a#signup-signin-tabs-tab-2:active, a#signup-signin-tabs-tab-2:visited, a#signup-signin-tabs-tab-2:hover {
+  background-color: transparent;
+  background-image: none;
+  border: none;
+  color: white;
+  outline: none;
+  text-decoration: none;
+  font-size: 1em;
+}
+.control-label {
+  color: white;
+  font-size: 1.5em;
+}
+.form-group > input {
+  background-color: rgba(0,0,0,.5);
+  color: white;
+  border: 1px solid rgba(255,255,255,.5);
+}
+button.btn-default, button.btn-default:hover, button.btn-default:active {
+  background-color: transparent;
+  background-image: none;
+  color: white;
+  outline: none;
+  transition: 1s;
+  text-shadow: none;
+}
+button.btn-default:hover {
+  background-color: rgba(100,255,100,.5);
+}
+.container-fluid, .row, .App, .router, .columnsContainer, .signoutRow, .header > div {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+.header {
+  border-bottom: .3em double rgba(255,0,0,.5);
+}
+.header > div {
+  text-align: center;
+  text-shadow: 0 0 .5em black;
+  height: 20vh;
+  background-color: rgba(0,0,0,.5);
+  overflow: hidden;
+  font-size: .8em;
+}
+.header > div > h1 {
+  font-size: 3.5em;
+  color: rgb(255,255,100);
+  text-shadow: .05em .05em .1em red;
+  font-family: 'Anton', sans-serif;
+  transition: 1s;
+  display: inline-block;
+}
+.header > div > h1:hover {
+  color: white;
+}
+.header > div > .signOutRow {
+  position: absolute;
+  width: 100%;
+  text-align: left;
+  padding: 0 1em;
+}
+.signOutRow > button, .signOutRow > button:active {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 1em;
+  color: rgb(255,255,100);
+  text-shadow: .05em .05em .1em red;
+  transition: 1s;
+}
+.signOutRow > button:hover {
+  color: white;
+}
+#rocketFaveHeader > div {
+  flex-direction: row;
+}
+#rocketFaveHeader > div > h1, #rocketFaveHeader > div > i.favesRocket {
+  font-size: 6em;
+}
+.header > div > a > i.fa-rocket, i.favesRocket {
+  display: inline-block;
+  font-size: 3.5em;
+  margin-left: .2em;
+  color: rgba(255,0,0,.7);
+  transition: .5s;
+}
+.header > div > i.fa-rocket:hover, i.favesRocket:hover {
+  color: rgba(255,255,255,1);
+}
+.header > div > form > button {
+  border: .2em solid rgba(255,255,100,.5);
+  border-radius: 1.5em;
+  background-color: black;
+  color: rgba(255,0,0,.7);
+  font-weight: bold;
+  outline: none;
+  padding: .5em;
+  font-size: 1.5em;
+  transition: .2s;
+}
+.header > div > form > button:hover {
+  border: .2em solid rgba(255,255,255,.5);
+}
+.searchBar {
+  color: white;
+  background-color: black;
+  margin: 0 1em 0 auto;
+  border: .2em solid rgba(255,255,100,.5);
+  border-radius: 2em;
+  width: 50%;
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: .5em;
+  outline: none;
+  text-align: left;
+  transition: .5s;
+}
+.searchBar:hover {
+  border: .2em solid rgba(255,255,255,.5);
+}
+.noMovies {
+  height: 90vh;
+}
+.noMovies h1 {
+  font-size: 10em;
+  color: rgb(255,255,100);
+  text-shadow: .05em .05em .1em red;
+  font-family: 'Anton', sans-serif;
+  transition: 1s;
+}
+.noMovies p {
+  color: white;
+  font-size: 3em;
+  text-shadow: .1em .1em .1em black;
+  font-weight: bold;
+  text-align: center;
+}
+.noMovies div {
+  width: 100%;
+  font-size: 3em;
+  text-align: center;
+  color: rgb(255,255,100);
+  text-shadow: .05em .05em .1em red;
+  font-family: 'Anton', sans-serif;
+  transition: 1s;
+}
+.movieColumn {
+  height: 79vh;
+  padding: 1em;
+}
+.placeHolderText {
+  color: white;
+}
+.movieColumnContents {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 1em;
+  text-align: center;
+  border: .3em double rgba(255,255,255,.5);
+  background-color: rgba(0,0,0,.8);
+  border-radius: 2em;
+  color: white;
+  font-size: 1.2em;
+  overflow: hidden;
+  transition: .5s;
+  font-size: .9em;
+}
+.movieColumnContents:hover {
+  background-color: rgba(0,0,0,.95);
+}
+#saveMovie {
+  font-size: 1em;
+  width: 100%;
+  max-height: 5%;
+  min-height: 5%;
+  padding: .5em 0;
+  margin: 0;
+  margin-top: 1em;
+  border-radius: 1em;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+a#hiddenSaveText {
+  color: rgba(255,255,100,1);
+  font-weight: bold;
+  font-size: 1.3em;
+  text-decoration: none;
+  display: none;
+  transition: .5s;
+}
+a#hiddenSaveText:hover {
+  text-shadow: 2px 2px 5px red;
+}
+#saveMovie button {
+  color: red;
+  padding: .2em;
+  background-color: transparent;
+  border-radius: 50%;
+  border: 1px solid white;
+  margin-right: .5em;
+  display: inline-block;
+  outline: none;
+}
+.movieColumnContents:hover > #saveMovie a#hiddenSaveText {
+  display: inline-block;
+}
+#movieTitle {
+  max-height: 20%;
+  height: 20%;
+  background-color: rgba(100,50,255, .2);
+  border: .1em solid rgba(255,255,255,.5);
+  border-radius: 1em;
+  width: 100%;
+  padding: .5em 1em;
+  overflow: hidden;
+  transition: .5s;
+}
+.movieColumnContents:hover > #movieTitle {
+  background-color: rgba(100,50,255, .5);
+  text-shadow: .25em .3em .1em black;
+}
+#movieTitle h3 {
+  font-size: 2em;
+  font-family: 'Anton', sans-serif;
+}
+#posterContainer {
+  max-height: 60%;
+  height: 60%;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+}
+#posterContainer > .linkTo {
+  text-decoration: none;
+  height: 100%;
+  padding: 1em 0;
+  margin: 0;
+}
+#posterContainer > .linkTo > img {
+  height: 100%;
+  margin: 1em 0;
+  border: .3em solid rgba(255,255,255,.5);
+  border-radius: .3em;
+  filter: opacity(75%);
+  transition: .2s;
+  padding: 0;
+  margin: 0;
+}
+#posterContainer > .linkTo > img:hover {
+  filter: opacity(100%);
+  box-shadow: 0 0 3em rgba(255,255,255,.5);
+}
+#movieInfo {
+  text-align: left;
+  border: .1em solid rgba(255,255,255,.5);
+  border-radius: .5em;
+  min-height: 20%;
+  max-height: 20%;
+  width: 100%;
+  padding: .5em 1em;
+  font-size: 1.2em;
+  background-color: rgba(0,0,0,.8);
+  color: white;
+  overflow-y: scroll;
+}
+#movieInfo p:nth-of-type(1) {
+  background-color: rgba(255,100,100,.5);
+  border-radius: .3em;
+  padding: 0 .3em;
+}
+#movieInfo p:nth-of-type(3),
+#movieInfo p:nth-of-type(4),
+#movieInfo p:nth-of-type(5) {
+  background-color: rgba(100,255,100,.5);
+  border-radius: .3em;
+  padding: 0 .3em;
+}
+#movieInfo::-webkit-scrollbar {
+  display: none;
+}
+#profileHeader {
+  padding: 0;
+  margin: 0;
+}
+#profileHeader > div {
+  height: 9.5vh;
+  padding: 0;
+  margin: 0;
+}
+#rocketFaveHeader > div {
+  height: 20vh;
+  padding: 0;
+  margin: 0;
+}
+#profileRocketFaveButton {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 2em;
+}
+.profileContents {
+  height: 90vh;
+  margin: 0;
+  padding: 0;
+  font-size: .9em;
+}
+.profileColumn {
+  height: 100%;
+  padding: 1em 5em;
+  margin: 0;
+  background-color: rgba(0,0,0,.5);
+}
+
+.profileMovieTitle {
+  min-height: 15%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.profileMovieTitle > button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  padding: 0;
+  font-size: 5em;
+  text-align: left;
+  color: rgb(255,255,100);
+  text-shadow: .05em .05em .1em red;
+  font-family: 'Anton', sans-serif;
+  transition: 1s;
+}
+.profileMovieTitle > button:hover, profileMovieTitle > button:active {
+  color: white;
+  outline: none;
+}
+.profilePosterContainer {
+  height: 75%;
+  padding: 0;
+  width: 100%;
+  overflow: hidden;
+}
+.profilePosterContainer > #profileMoviePosterButton > img {
+  height: 100%;
+  margin: 0;
+  border: .3em double rgba(255,255,255,.5);
+  transition: .2s;
+}
+#profileMoviePosterButton:hover > img {
+  border: .3em double rgba(100,255,100,.5);
+}
+#profileMoviePosterButton, #profileMoviePosterButton:active {
+  outline: none;
+  display: flex;
+  justify-content: center;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+}
+.profileDetails {
+  height: 25%;
+  width: 100%;
+}
+.profileDetails p {
+  font-size: 2em;
+  font-family: 'Anton', sans-serif;
+  color: white;
+  width:100%;
+  border-radius: .5em;
+  text-align: center;
+}
+.profileTagline {
+  height: 15%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+.profileTagline > h3 {
+  font-size: 2.5em;
+  text-align: left;
+  font-family: 'Anton', sans-serif;
+  color: white;
+  background-color: rgba(255,0,0,.5);
+  border-radius: .5em;
+  padding: .3em;
+}
+.profileOverviewContainer {
+  height: 60%;
+  padding: 0;
+}
+.profileOverview {
+  color: white;
+  width: 100%;
+  height: 100%;
+  border: .5em double rgba(255,255,255,.5);
+  padding: 1em 3em;
+  border-radius: 1em;
+  overflow-y: scroll;
+  font-size: .9em;
+  background-color: rgba(0,0,0,.7);
+}
+.profileOverview > h1 {
+  font-size: 3em;
+  font-family: 'Anton', sans-serif;
+  color: white;
+}
+.profileOverview > p {
+  font-size: 2em;
+  line-height: 2em;
+}
+.profileOverview::-webkit-scrollbar {
+  display: none;
+}
+.profileRocketFave {
+  text-align: right;
+}
+#profileRocketFaveButton, #profileRocketFaveButton:active {
+  background-color: transparent;
+  outline: 0;
+  border: none;
+  font-size: 2em;
+  text-decoration: none;
+  color: rgb(255,255,100);
+  text-shadow: .05em .05em .1em red;
+  font-family: 'Anton', sans-serif;
+  transition: .3s;
+}
+#profileRocketFaveButton:hover {
+  color: white;
+}
+.profileStats {
+  height: 25%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 1.5em;
+  font-family: 'Anton', sans-serif;
+  color: white;
+}
+
+.profileStats span {
+  background-color: rgba(100,255,100,.5);
+  padding: 0 .3em;
+  border-radius: .5em;
+}
+.modal-header, .modal-content, .modal-dialog {
+  background-color: transparent !important;
+  border: 0 !important;
+}
+.modal-dialog {
+  border: .3em solid rgba(255,255,255,.5) !important;
+  border-radius: 2em !important;
+  background-color: rgba(0,0,0,.8) !important;
+}
+.close > span {
+  color: white;
+}
+#castModalHeader {
+  color: rgb(255,255,100);
+  text-shadow: .05em .05em .1em red !important;
+  font-family: 'Anton', sans-serif !important;
+  font-size: 4em !important;
+}
+#castList li {
+  color: white;
+  font-size: 1em;
+  list-style:none;
+}
+#actor {
+  font-weight: bold;
+  color: rgba(100,255,100,1);
+}
+@media (max-width: 767px) {
+  .signUpSignInLogo {
+    font-size: 3em;
+  }
+  .header > div {
+    font-size: .5em;
+  }
+  #movieTitle h3 {
+  font-size: 1.5em;
+  }
+  div#rightProfileColumn {
+    padding-top: 0;
+  }
+  div.profileDetails {
+    padding-top: 3em;
+  }
+  #castModalHeader{
+    font-size: 2em;
+  }
+  #castList h3 {
+    font-size: 1.5em;
+  }
+  #rocketFaveHeader > div > h1, #rocketFaveHeader > div > i.favesRocket {
+    font-size: 3.5em;
+    outline: none;
+  }
+  #profileHeader > div {
+    height: 10%;
+    padding: 0;
+    margin: 0;
+  }
+  .profileContents {
+    height: 90%;
+    margin: 0;
+    padding: 0;
+  }
+  .profileTagline > h3 {
+    font-size: 2.5em;
+  }
+  .profileOverview > p {
+    font-size: 1.5em;
+    line-height: 1.3em;
+  }
+  .profileMovieTitle > button {
+    font-size: 3em;
+  }
 }

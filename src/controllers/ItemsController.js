@@ -48,6 +48,6 @@ export const remove = function (req, res, next) {
   .catch(err => next(err));
 };
 
-const userItemsController = { create, show, remove };
+const ItemsController = { create, show, remove };
 
-export default userItemsController;
+export default ItemsController;

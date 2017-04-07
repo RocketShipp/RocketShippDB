@@ -68,7 +68,7 @@ class SignUp extends Component {
 
         <Button type="submit">
          Sign Up
-       </Button>
+        </Button>
       </form>
     );
   }

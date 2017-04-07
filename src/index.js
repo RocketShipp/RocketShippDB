@@ -1,5 +1,5 @@
-import ItemRoutes from './routes/ItemRoutes';
 require('dotenv').config();
+import ItemRoutes from './routes/ItemRoutes';
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -20,10 +20,10 @@ app.use(authenticationRoutes);
 
 const authStrategy = passport.authenticate('authStrategy', { session: false });
 
-app.use(authStrategy, ItemRoutes);
+app.use(ItemRoutes);
 
 app.get('/rocketfaves', authStrategy, function (req, res) {
-  res.send(`Whaddup, ${req.user.username}!`);
+  res.send(`${req.user.username}`);
 });
 
 const port = process.env.PORT;
