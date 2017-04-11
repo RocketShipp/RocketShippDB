@@ -47,7 +47,7 @@ class Movies extends Component {
       });
   }
   getPopularMovies() {
-    axios.get('http://api.themoviedb.org/3/movie/popular?api_key=2dba200e2682e0f8903ed87b9c9e02d1&language=en-US&page=1')
+    axios.get('https://api.themoviedb.org/3/movie/popular?api_key=2dba200e2682e0f8903ed87b9c9e02d1&language=en-US&page=1')
       .then(resp => {
         this.setState({
           movies: resp.data.results
