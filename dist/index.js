@@ -42,7 +42,7 @@ app.get('/rocketfaves', authStrategy, function (req, res) {
   res.send('' + req.user.username);
 });
 
-var port = process.env.PORT || 3007;
+var port = process.env.PORT || 5007;
 app.listen(port, function () {
   console.log('Listening on port:' + port);
 });
