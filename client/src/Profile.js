@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import {Tooltip, OverlayTrigger} from 'react-bootstrap';
 
 
 class Profile extends Component {
@@ -16,7 +17,11 @@ class Profile extends Component {
     };
   }
   componentDidMount() {
-    axios.get(`/rocketfaves/${localStorage.getItem('userId')}`)
+    axios.get(`/rocketfaves/${localStorage.getItem('userId')}`, {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    })
       .then(resp => {
         this.setState({
           savedMovies: resp.data[0].items
@@ -60,14 +65,22 @@ class Profile extends Component {
     event.preventDefault();
     const savedMovieIdArr = this.state.savedMovies.map(movie => movie.id);
     if (this.rocketFaveText() === 'Add to RocketFaves') {
-      axios.post(`/rocketfaves/${localStorage.getItem('userId')}`, this.state.movie)
+      axios.post(`/rocketfaves/${localStorage.getItem('userId')}`, this.state.movie, {
+        headers: {
+          authorization: localStorage.getItem('token')
+        }
+      })
         .then(resp => {
           this.setState({
             isFave: true
           });
         });
     } else if (this.rocketFaveText() === 'Remove RocketFave') {
-      axios.delete(`/rocketfaves/${localStorage.getItem('userId')}/item/${this.state.savedMovies[savedMovieIdArr.indexOf(id)]._id}`)
+      axios.delete(`/rocketfaves/${localStorage.getItem('userId')}/item/${this.state.savedMovies[savedMovieIdArr.indexOf(id)]._id}`, {
+        headers: {
+          authorization: localStorage.getItem('token')
+        }
+      })
       .then(resp => {
         this.setState({
           isFave: false
@@ -143,7 +156,7 @@ class Profile extends Component {
   }
   checkTagline() {
     if (this.state.movie.tagline === '') {
-      return 'No tagline data';
+      return (this.state.movie.original_title);
     }
     return this.state.movie.tagline;
   }
@@ -154,10 +167,15 @@ class Profile extends Component {
           <div className="col-xs-12">
             <h1><Link className="linkTo" to={'/'}>RocketShippDB</Link></h1>
             <Link className="linkTo" to={'/rocketfaves'} >
-              <i
-                className="fa fa-rocket profileRocket"
-                aria-hidden="false"
-              />
+              <OverlayTrigger
+                placement="right"
+                overlay={<Tooltip>Go to RocketFaves</Tooltip>}
+              >
+                <i
+                  className="fa fa-rocket"
+                  aria-hidden="false"
+                />
+              </OverlayTrigger>
             </Link>
           </div>
         </div>
@@ -165,14 +183,20 @@ class Profile extends Component {
           <div className="col-xs-12 col-md-4 profileColumn" id="leftProfileColumn">
             <div className="profilePosterContainer flexBoxCenterThis">
               <button id="profileMoviePosterButton" onClick={(event) => event.preventDefault()}>
-                <img
-                  data-toggle="modal"
-                  data-target="#trailer-modal"
-                  alt="Poster"
-                  className="img-responsive"
-                  src={`https://image.tmdb.org/t/p/w300/${this.state.movie.poster_path}`}
-                  onError={(event) => (event.target.src = 'http://i.imgur.com/40NGAaC.png')}
-                />
+                <OverlayTrigger
+                  placement="top"
+                  overlay={<Tooltip id="trailerTooltip">Watch Trailers</Tooltip>}
+                >
+                  <img
+                    id="profilePosterImg"
+                    data-toggle="modal"
+                    data-target="#trailer-modal"
+                    alt="Poster"
+                    className="img-responsive"
+                    src={`https://image.tmdb.org/t/p/w300/${this.state.movie.poster_path}`}
+                    onError={(event) => (event.target.src = 'http://i.imgur.com/40NGAaC.png')}
+                  />
+                </OverlayTrigger>
               </button>
             </div>
             <div className="profileDetails flexBoxCenterThis">
@@ -188,12 +212,17 @@ class Profile extends Component {
             <div className="profileOverviewContainer flexBoxCenterThis">
               <div className="profileOverview">
                 <div className="profileMovieTitle">
-                  <button
-                    data-toggle="modal"
-                    data-target="#cast-modal"
+                  <OverlayTrigger
+                    placement="right"
+                    overlay={<Tooltip id="castTooltip">View Cast</Tooltip>}
                   >
-                    {this.state.movie.original_title}
-                  </button>
+                    <button
+                      data-toggle="modal"
+                      data-target="#cast-modal"
+                    >
+                      {this.state.movie.original_title}
+                    </button>
+                  </OverlayTrigger>
                 </div>
                 <hr />
                 <p>{this.state.movie.overview}</p>
@@ -276,10 +305,15 @@ class Profile extends Component {
               <div className="col-xs-12">
                 <h1><Link className="linkTo" to={'/'}>RocketShippDB</Link></h1>
                 <Link className="linkTo" to={'/rocketfaves'} >
-                  <i
-                    className="fa fa-rocket profileRocket"
-                    aria-hidden="false"
-                  />
+                  <OverlayTrigger
+                    placement="right"
+                    overlay={<Tooltip>Go to RocketFaves</Tooltip>}
+                  >
+                    <i
+                      className="fa fa-rocket"
+                      aria-hidden="false"
+                    />
+                  </OverlayTrigger>
                 </Link>
               </div>
             </div>

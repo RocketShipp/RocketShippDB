@@ -15,7 +15,7 @@ class SignUpSignIn extends Component {
 
   render() {
     return (
-      <div className="flexBoxCenterThis">
+      <div className="sinUpSignInRowContainer">
         <Row>
           <Col className="signUpSignInLogo" xs={12}>
             <h1>RocketShippDB</h1>

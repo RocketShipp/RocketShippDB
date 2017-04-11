@@ -32,7 +32,7 @@ class App extends Component {
       <div className="col-xs-12 flexBoxCenterThis noMovies animated flipInY">
         <h1>404</h1>
         <p>{'Sorry, this page does\'t exist!'}</p>
-        <div className="flexBoxCenterThis">
+        <div>
           <Link className="linkTo" to={'/'}>Get me outta here!</Link>
         </div>
       </div>

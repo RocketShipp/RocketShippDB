@@ -32,12 +32,12 @@ class SignUp extends Component {
     return (
       <form onSubmit={this.handleSubmit.bind(this)}>
         <FormGroup>
-          <ControlLabel>Username</ControlLabel>
+          <ControlLabel>Email</ControlLabel>
           <FormControl
             type="email"
             name="username"
             onChange={event => this.handleChange(event)}
-            placeholder="Username"
+            placeholder="Email"
             value={this.state.username}
           />
         </FormGroup>

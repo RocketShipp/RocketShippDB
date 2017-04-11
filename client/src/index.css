@@ -4,7 +4,6 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  font-size: 1em;
   background-image: url('http://i.imgur.com/zRWE6N7.png');
   background-repeat: repeat-y;
   background-position: top;
@@ -28,15 +27,26 @@ body {
   padding: 0;
   margin: 0;
 }
-#myNav {
-  background-color: transparent;
-  background-image: none;
-  border: none;
-  color: black;
+.sinUpSignInRowContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+.signUpSignInContainer {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0
+}
+.sinUpSignInRowContainer .row {
+  height: auto;
 }
 .signUpSignInLogo {
   width: 100%;
-  font-size: 5em;
+  font-size: 6.5em;
   text-align: center;
   display: inline-block;
 }
@@ -47,7 +57,7 @@ body {
   font-family: 'Anton', sans-serif;
   transition: 1s;
   display: inline-block;
-  margin-bottom: 1em;
+  margin-bottom: .5em;
 }
 .signUpSignInLogo > i.fa-rocket {
   display: inline-block;
@@ -62,14 +72,19 @@ body {
 }
 ul.nav-tabs {
   border: none;
+  border-bottom: .3em double red;
   margin-bottom: 1em;
 }
 ul.nav-tabs li {
   background-color: transparent;
   background-image: none;
+  margin-bottom: 1em;
 }
 ul.nav-tabs li.active a {
-  background-color: rgba(100,255,100,.5) !important;
+  background-color: rgba(0,0,0,.5) !important;
+  border: 1px solid white !important;
+  color: white !important;
+  font-weight: bold;
 }
 a#signup-signin-tabs-tab-1, a#signup-signin-tabs-tab-1:active, a#signup-signin-tabs-tab-1:visited, a#signup-signin-tabs-tab-1:hover,
 a#signup-signin-tabs-tab-2, a#signup-signin-tabs-tab-2:active, a#signup-signin-tabs-tab-2:visited, a#signup-signin-tabs-tab-2:hover {
@@ -86,7 +101,7 @@ a#signup-signin-tabs-tab-2, a#signup-signin-tabs-tab-2:active, a#signup-signin-t
   font-size: 1.5em;
 }
 .form-group > input {
-  background-color: rgba(0,0,0,.5);
+  background-color: rgba(0,0,0,.8);
   color: white;
   border: 1px solid rgba(255,255,255,.5);
 }
@@ -101,7 +116,7 @@ button.btn-default, button.btn-default:hover, button.btn-default:active {
 button.btn-default:hover {
   background-color: rgba(100,255,100,.5);
 }
-.container-fluid, .row, .App, .router, .columnsContainer, .signoutRow, .header > div {
+.container-fluid, .row, .App, .router, .columnsContainer, .signoutRow {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -110,6 +125,8 @@ button.btn-default:hover {
   border-bottom: .3em double rgba(255,0,0,.5);
 }
 .header > div {
+  margin: 0;
+  padding: 0;
   text-align: center;
   text-shadow: 0 0 .5em black;
   height: 20vh;
@@ -194,10 +211,14 @@ button.btn-default:hover {
   border: .2em solid rgba(255,255,255,.5);
 }
 .noMovies {
-  height: 90vh;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 .noMovies h1 {
   font-size: 10em;
+  text-align: center;
   color: rgb(255,255,100);
   text-shadow: .05em .05em .1em red;
   font-family: 'Anton', sans-serif;
@@ -325,7 +346,8 @@ a#hiddenSaveText:hover {
 }
 #posterContainer > .linkTo > img:hover {
   filter: opacity(100%);
-  box-shadow: 0 0 3em rgba(255,255,255,.5);
+  box-shadow: 0 0 3em rgba(255,255,100, .5);
+  border: .3em solid rgba(255,255,100, .5);
 }
 #movieInfo {
   text-align: left;
@@ -387,14 +409,16 @@ a#hiddenSaveText:hover {
   margin: 0;
   background-color: rgba(0,0,0,.5);
 }
-
+#castTooltip, #trailerTooltip {
+  font-size: 1.5em;
+}
 .profileMovieTitle {
   min-height: 15%;
   width: 100%;
   display: flex;
   align-items: center;
 }
-.profileMovieTitle > button {
+.profileMovieTitle button {
   background-color: transparent;
   outline: none;
   border: none;
@@ -406,7 +430,7 @@ a#hiddenSaveText:hover {
   font-family: 'Anton', sans-serif;
   transition: 1s;
 }
-.profileMovieTitle > button:hover, profileMovieTitle > button:active {
+.profileMovieTitle button:hover, .profileMovieTitle button:active {
   color: white;
   outline: none;
 }
@@ -416,13 +440,13 @@ a#hiddenSaveText:hover {
   width: 100%;
   overflow: hidden;
 }
-.profilePosterContainer > #profileMoviePosterButton > img {
+#profilePosterImg {
   height: 100%;
   margin: 0;
   border: .3em double rgba(255,255,255,.5);
   transition: .2s;
 }
-#profileMoviePosterButton:hover > img {
+#profileMoviePosterButton:hover #profilePosterImg {
   border: .3em double rgba(100,255,100,.5);
 }
 #profileMoviePosterButton, #profileMoviePosterButton:active {
@@ -550,12 +574,43 @@ a#hiddenSaveText:hover {
   font-weight: bold;
   color: rgba(100,255,100,1);
 }
+#footerContainer {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 20vh;
+  width: 100%;
+  background-color: rgba(0,0,0,.5);;
+  border-top: .3em double rgba(255,0,0,.5);
+  color: white;
+}
+#contactInfo {
+  text-align: center;
+}
+#contactButtons {
+  width: 100%;
+  text-align: center;
+}
+#contactButtons a, #contactButtons a:visited, #contactButtons a:active {
+  text-decoration: none;
+  color: inherit;
+  padding: 0 1em;
+  font-size: 4em;
+  color: rgba(255,255,255,.5);
+}
+#contactButtons a:hover {
+  color: white;
+}
+#contactButtons a:nth-child(2) {
+  border-right: .01em solid white;
+  border-left: .01em solid white;
+}
 @media (max-width: 767px) {
   .signUpSignInLogo {
     font-size: 3em;
   }
   .header > div {
-    font-size: .5em;
+    font-size: .65em;
   }
   #movieTitle h3 {
   font-size: 1.5em;
@@ -565,6 +620,9 @@ a#hiddenSaveText:hover {
   }
   div.profileDetails {
     padding-top: 3em;
+  }
+  div.profileStats {
+    margin-top: 1em;
   }
   #castModalHeader{
     font-size: 2em;
@@ -590,10 +648,19 @@ a#hiddenSaveText:hover {
     font-size: 2.5em;
   }
   .profileOverview > p {
-    font-size: 1.5em;
+    font-size: 1.8em;
     line-height: 1.3em;
   }
-  .profileMovieTitle > button {
+  .profileMovieTitle button {
+    font-size: 3em;
+  }
+  .noMovies {
+    font-size: .75em;
+  }
+  #footerContainer {
+    font-size: .4em;
+  }
+  #contactInfo h3 {
     font-size: 3em;
   }
 }

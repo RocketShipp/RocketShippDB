@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import axios from 'axios';
+import {Tooltip, OverlayTrigger} from 'react-bootstrap';
 
 const SearchBar = props => {
   return (
@@ -13,11 +13,15 @@ const SearchBar = props => {
           <Link className="linkTo" to={'/'}>RocketShippDB</Link>
         </h1>
         <Link className="linkTo" to={'/rocketfaves'}>
-          <i
-            className="fa fa-rocket"
-            aria-hidden="false"
-            data-toggle="tooltip" data-placement="right" title="RocketFaves"
-          />
+          <OverlayTrigger
+            placement="right"
+            overlay={<Tooltip>Go to RocketFaves</Tooltip>}
+          >
+            <i
+              className="fa fa-rocket"
+              aria-hidden="false"
+            />
+          </OverlayTrigger>
         </Link>
         <br />
         <form onSubmit={(event) => props.handleSubmit(event)}>

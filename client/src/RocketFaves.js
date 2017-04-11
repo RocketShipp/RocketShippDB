@@ -14,7 +14,11 @@ class RocketFaves extends Component {
   }
 
   componentDidMount() {
-    axios.get(`/rocketfaves/${this.state.userId}`)
+    axios.get(`/rocketfaves/${this.state.userId}`, {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    })
     .then(resp => {
       this.setState({
         movies: resp.data[0].items
@@ -32,7 +36,11 @@ class RocketFaves extends Component {
     }));
     if (movieIdArr.indexOf(id) >= 0) {
       // This movie ID exists in my saved movies ID array, so DELETE it from my db
-      axios.delete(`/rocketfaves/${localStorage.getItem('userId')}/item/${this.state.movies[movieIdArr.indexOf(id)]._id}`)
+      axios.delete(`/rocketfaves/${localStorage.getItem('userId')}/item/${this.state.movies[movieIdArr.indexOf(id)]._id}`, {
+        headers: {
+          authorization: localStorage.getItem('token')
+        }
+      })
           .then(resp => {
             // Remove movie object from both states (from the page and savedMovies)
             const newMovies = this.state.movies.filter(movie => movie.id !==

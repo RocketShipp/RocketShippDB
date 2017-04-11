@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import MovieList from './MovieList';
 import SearchBar from './SearchBar';
+import Footer from './Footer';
 
 class Movies extends Component {
   constructor() {
@@ -34,7 +35,11 @@ class Movies extends Component {
     .catch(err => console.log(err));
   }
   getSavedMovies() {
-    axios.get(`/rocketfaves/${localStorage.getItem('userId')}`)
+    axios.get(`/rocketfaves/${localStorage.getItem('userId')}`, {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    })
       .then(resp => {
         this.setState({
           savedMovies: resp.data[0].items
@@ -42,7 +47,7 @@ class Movies extends Component {
       });
   }
   getPopularMovies() {
-    axios.get('http://api.themoviedb.org/3/movie/popular?api_key=2dba200e2682e0f8903ed87b9c9e02d1')
+    axios.get('http://api.themoviedb.org/3/movie/popular?api_key=2dba200e2682e0f8903ed87b9c9e02d1&language=en-US&page=1')
       .then(resp => {
         this.setState({
           movies: resp.data.results
@@ -79,7 +84,11 @@ class Movies extends Component {
     }));
     if (savedMovieIdArr.indexOf(id) >= 0) {
       // This movie ID exists in my saved movies ID array, so DELETE it from my db
-      axios.delete(`/rocketfaves/${localStorage.getItem('userId')}/item/${this.state.savedMovies[savedMovieIdArr.indexOf(id)]._id}`)
+      axios.delete(`/rocketfaves/${localStorage.getItem('userId')}/item/${this.state.savedMovies[savedMovieIdArr.indexOf(id)]._id}`, {
+        headers: {
+          authorization: localStorage.getItem('token')
+        }
+      })
           .then(resp => {
             // Remove movie object from saved movie state
             this.setState({
@@ -88,7 +97,11 @@ class Movies extends Component {
           });
     } else {
       // This movie ID is not in my saved movies ID array, so POST it to my db
-      axios.post(`/rocketfaves/${localStorage.getItem('userId')}`, (this.state.movies[movieIdArr.indexOf(id)]))
+      axios.post(`/rocketfaves/${localStorage.getItem('userId')}`, (this.state.movies[movieIdArr.indexOf(id)]), {
+        headers: {
+          authorization: localStorage.getItem('token')
+        }
+      })
           .then(resp => {
             // Concat movie object to savedMovies state
             this.setState({
@@ -115,7 +128,8 @@ class Movies extends Component {
           savedMovies={this.state.savedMovies}
           onError={this.handleImgError.bind(this)}
           rocketFaveHandle={this.rocketFaveHandle.bind(this)}
-         />
+        />
+        <Footer/>
       </div>
     );
   }
