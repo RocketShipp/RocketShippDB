@@ -14,6 +14,12 @@ mongoose
 
 const app = express();
 
+app.use(express.static('public'));
+
+app.get('/', (req, res, next) => {
+  res.sendFile('public/index.html');
+});
+
 const authenticationRoutes = require('./routes/AuthenticationRoutes');
 
 app.use(bodyParser.json());
@@ -27,7 +33,7 @@ app.get('/rocketfaves', authStrategy, function (req, res) {
   res.send(`${req.user.username}`);
 });
 
-const port = process.env.PORT || 3007;
+const port = process.env.PORT || 5007;
 app.listen(port, () => {
   console.log(`Listening on port:${port}`);
 });
