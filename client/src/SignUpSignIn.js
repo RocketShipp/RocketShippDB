@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Tabs, Tab, Row, Col, Alert } from 'react-bootstrap';
 import SignUp from './SignUp';
 import SignIn from './SignIn';
+import {Tooltip, OverlayTrigger} from 'react-bootstrap';
 
 class SignUpSignIn extends Component {
 
@@ -38,6 +39,14 @@ class SignUpSignIn extends Component {
             </Tabs>
           </Col>
         </Row>
+        <OverlayTrigger
+          placement="top"
+          overlay={<Tooltip id="aboutToolTip">RocketShippDB is a free movie database app <small>(utilizing TMDb API)</small> that allows you to save your favorite movies to your "RocketFaves", watch every trailer available on YouTube, view the cast list and monitor how much revenue your faves have made from a given budget! This is a personal project of mine and is completely free.</Tooltip>}
+        >
+          <button id="aboutLink" onClick={(event) => event.preventDefault()}>
+            What is RocketShippDB?
+          </button>
+        </OverlayTrigger>
       </div>
     );
   }

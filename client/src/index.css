@@ -4,9 +4,9 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-image: url('http://i.imgur.com/zRWE6N7.png');
+  background: url('http://i.imgur.com/zRWE6N7.png') #000;
   background-repeat: repeat-y;
-  background-position: top;
+  background-position: center;
   background-size: cover;
   background-attachment: fixed;
 }
@@ -78,7 +78,6 @@ ul.nav-tabs {
 ul.nav-tabs li {
   background-color: transparent;
   background-image: none;
-  margin-bottom: 1em;
 }
 ul.nav-tabs li.active a {
   background-color: rgba(0,0,0,.5) !important;
@@ -115,6 +114,25 @@ button.btn-default, button.btn-default:hover, button.btn-default:active {
 }
 button.btn-default:hover {
   background-color: rgba(100,255,100,.5);
+}
+#aboutLink, #aboutLink:visited, #aboutLink:active {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5em;
+  background-color: rgba(0,0,0,.5);
+  padding: 0;
+  margin: 1em 0;
+  border: .1em solid white;
+  padding: .5em;
+  border-radius: 2em;
+  outline: none;
+  overflow: hidden;
+}
+#aboutLink:hover {
+  text-decoration: underline;
+}
+#aboutToolTip {
+  font-size: 1.3em;
 }
 .container-fluid, .row, .App, .router, .columnsContainer, .signoutRow {
   margin: 0;
@@ -574,11 +592,28 @@ a#hiddenSaveText:hover {
   font-weight: bold;
   color: rgba(100,255,100,1);
 }
+#nextPageButtonContainer {
+  height: 5vh;
+  margin-bottom: 1em;
+}
+#nextPageButtonContainer button, #nextPageButtonContainer button:active {
+  background-color: transparent;
+  border: .1em solid white;
+  padding: .3em;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  outline: none;
+  transition: .3s;
+}
+#nextPageButtonContainer button:hover {
+  background-color: rgba(100,255,100,.5);
+}
 #footerContainer {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  height: 20vh;
+  height: 15vh;
   width: 100%;
   background-color: rgba(0,0,0,.5);;
   border-top: .3em double rgba(255,0,0,.5);
@@ -595,7 +630,7 @@ a#hiddenSaveText:hover {
   text-decoration: none;
   color: inherit;
   padding: 0 1em;
-  font-size: 4em;
+  font-size: 3em;
   color: rgba(255,255,255,.5);
 }
 #contactButtons a:hover {
@@ -661,6 +696,6 @@ a#hiddenSaveText:hover {
     font-size: .4em;
   }
   #contactInfo h3 {
-    font-size: 3em;
+    font-size: 2.5em;
   }
 }
