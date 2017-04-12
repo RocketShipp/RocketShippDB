@@ -60,7 +60,6 @@ class Movies extends Component {
       });
   }
   nextPageButton() {
-
     return (
       <div className="row">
         <div className="col-xs-12 flexBoxCenterThis" id="nextPageButtonContainer">

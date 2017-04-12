@@ -7,7 +7,7 @@ const SearchBar = props => {
     <div className="row header animated slideInDown">
       <div className="col-xs-12">
         <div className="signOutRow">
-          <button onClick={props.handleSignOut}>Sign Out of {props.userName}</button>
+          <button onClick={props.handleSignOut}>Sign Out<span className="hidden-xs"> of {props.userName}</span></button>
         </div>
         <h1 onClick={() => props.getPopularMovies()}>
           <Link className="linkTo" to={'/'}>RocketShippDB</Link>
@@ -24,7 +24,7 @@ const SearchBar = props => {
           </OverlayTrigger>
         </Link>
         <br />
-        <form onSubmit={(event) => props.handleSubmit(event)}>
+        <form id="searchForm" onSubmit={(event) => props.handleSubmit(event)}>
           <input
             type="text"
             onChange={(event) => props.onChange(event)}
