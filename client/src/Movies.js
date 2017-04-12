@@ -14,7 +14,7 @@ class Movies extends Component {
       searchText: '',
       userName: '',
       page: 1,
-      showPageNumbers: true
+      showNextPageButton: true
     };
   }
   componentDidMount() {
@@ -47,7 +47,7 @@ class Movies extends Component {
   getPopularMovies() {
     axios.get('https://api.themoviedb.org/3/movie/popular?api_key=2dba200e2682e0f8903ed87b9c9e02d1&language=en-US&page=1')
       .then(resp => {
-        this.setState({ movies: resp.data.results, showPageNumbers: true });
+        this.setState({ movies: resp.data.results, showNextPageButton: true });
       });
   }
   getThisPopularPage(event) {
@@ -60,7 +60,7 @@ class Movies extends Component {
       });
   }
   nextPageButton() {
-    
+
     return (
       <div className="row">
         <div className="col-xs-12 flexBoxCenterThis" id="nextPageButtonContainer">
@@ -76,7 +76,7 @@ class Movies extends Component {
     event.preventDefault();
     axios.get(`https://api.themoviedb.org/3/search/movie?api_key=2dba200e2682e0f8903ed87b9c9e02d1&language=en-US&query=${this.state.searchText}&page=1&include_adult=false`)
       .then(resp => {
-        this.setState({ movies: resp.data.results, page: 1, showPageNumbers: false });
+        this.setState({ movies: resp.data.results, page: 1, showNextPageButton: false });
       })
       .catch(err => {
         console.err(`Error ${err}`);
@@ -121,7 +121,6 @@ class Movies extends Component {
           });
     }
   }
-
   render() {
     return (
       <div className="App">
@@ -140,7 +139,7 @@ class Movies extends Component {
           onError={this.handleImgError.bind(this)}
           rocketFaveHandle={this.rocketFaveHandle.bind(this)}
         />
-        { this.state.showPageNumbers ? this.nextPageButton() : null }
+        { this.state.showNextPageButton ? this.nextPageButton() : null }
         <Footer/>
       </div>
     );

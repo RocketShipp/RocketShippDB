@@ -115,7 +115,7 @@ button.btn-default, button.btn-default:hover, button.btn-default:active {
 button.btn-default:hover {
   background-color: rgba(100,255,100,.5);
 }
-#aboutLink, #aboutLink:visited, #aboutLink:active {
+#aboutLink, #aboutLink:visited, #aboutLink:active, #aboutLink:hover {
   color: white;
   text-decoration: none;
   font-size: 1.5em;
@@ -127,9 +127,6 @@ button.btn-default:hover {
   border-radius: 2em;
   outline: none;
   overflow: hidden;
-}
-#aboutLink:hover {
-  text-decoration: underline;
 }
 #aboutToolTip {
   font-size: 1.3em;
@@ -593,21 +590,24 @@ a#hiddenSaveText:hover {
   color: rgba(100,255,100,1);
 }
 #nextPageButtonContainer {
-  height: 5vh;
-  margin-bottom: 1em;
+  height: 6vh;
 }
 #nextPageButtonContainer button, #nextPageButtonContainer button:active {
-  background-color: transparent;
-  border: .1em solid white;
-  padding: .3em;
+  background-color: rgba(0,0,0,.5);
+  border: .2em solid rgba(255,255,100, .5);
+  border-radius: 1em;
   text-align: center;
-  color: white;
+  color: rgb(255,255,100);
+  text-shadow: .05em .05em .1em red;
   font-weight: bold;
   outline: none;
   transition: .3s;
+  padding: .3em 1em;
 }
 #nextPageButtonContainer button:hover {
-  background-color: rgba(100,255,100,.5);
+  background-color: black;
+  border: .2em solid rgba(255,255,255,.5);
+  color: white;
 }
 #footerContainer {
   margin: 0;
